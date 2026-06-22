@@ -31,88 +31,159 @@
             color: #3C2B20;
             overflow: hidden;
             height: 100vh;
-            display: flex;
-            flex-direction: column;
+            width: 100vw;
+            min-height: 100vh;
+            min-width: 100vw;
+            display: grid;
+            grid-template-columns: minmax(250px, 1fr) minmax(440px, 2.2fr) minmax(250px, 1fr);
+            grid-template-rows: 1fr;
+            align-items: stretch;
+            justify-items: stretch;
+            gap: 12px;
+            padding: 0;
             -webkit-touch-callout: none;
             -webkit-user-select: none;
             user-select: none;
         }
 
-        /* Desktop Split Layout (1024px+) */
-        @media (min-width: 1024px) {
-            body {
-                display: grid;
-                grid-template-columns: minmax(760px, 2.3fr) minmax(340px, 0.95fr);
-                grid-template-rows: auto 1fr;
-                height: 100vh;
-                overflow: hidden;
-                gap: 0;
-            }
+        #top-status {
+            grid-column: 1;
+            grid-row: 1;
+            width: 100%;
+            height: 100%;
+            display: flex !important;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: stretch;
+            background: linear-gradient(180deg, #F6EBD3 0%, #E8D7B9 50%);
+            border-right: 4px solid #C89B3C;
+            padding: 18px 14px;
+            gap: 14px;
+            overflow: hidden;
+            position: relative;
+            z-index: 30;
+            box-shadow: inset -6px 0 10px rgba(0,0,0,0.06);
+        }
 
-            #top-status {
-                grid-column: 2;
-                grid-row: 1;
-                width: 100%;
-                height: auto;
-                max-height: none;
-                display: flex !important;
-                flex-direction: column;
-                justify-content: flex-start;
-                align-items: stretch;
-                background: linear-gradient(180deg, #F6EBD3 0%, #E8D7B9 50%);
-                border-left: 4px solid #C89B3C;
-                border-bottom: none;
-                padding: 14px 14px;
-                gap: 12px;
-                overflow-y: visible;
-                overscroll-behavior: contain;
-                position: relative;
-                top: auto;
-                z-index: 30;
-                box-shadow: inset -6px 0 10px rgba(0,0,0,0.06);
-            }
+        .game-main {
+            grid-column: 2;
+            grid-row: 1;
+            width: 100%;
+            height: 100%;
+            min-height: 0;
+            display: flex !important;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            padding: 14px 18px;
+            background: linear-gradient(135deg, #C89B3C 0%, #F6EBD3 50%, #E8D7B9 100%);
+            overflow: hidden;
+            position: relative;
+        }
 
-            .game-main {
-                grid-column: 1;
-                grid-row: 1 / span 2;
-                width: 100%;
-                height: 100%;
-                min-height: 0;
-                display: flex !important;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                gap: 16px;
-                padding: 18px 24px 18px 28px;
-                background: linear-gradient(135deg, #C89B3C 0%, #F6EBD3 50%, #E8D7B9 100%);
-                overflow: visible;
-                position: relative;
-            }
+        .game-panel {
+            grid-column: 3;
+            grid-row: 1;
+            width: 100%;
+            height: 100%;
+            min-height: 0;
+            display: flex !important;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: stretch;
+            background: linear-gradient(180deg, #F6EBD3 0%, #E8D7B9 50%);
+            border-left: 4px solid #C89B3C;
+            padding: 18px 14px;
+            gap: 14px;
+            overflow: hidden;
+            position: relative;
+            z-index: 30;
+            box-shadow: inset 8px 0 10px rgba(0,0,0,0.08);
+        }
 
-            .game-panel {
-                grid-column: 2;
-                grid-row: 2;
-                width: 100%;
-                height: 100%;
-                min-height: 0;
-                display: flex !important;
-                flex-direction: column;
-                justify-content: flex-start;
-                align-items: stretch;
-                background: linear-gradient(180deg, #F6EBD3 0%, #E8D7B9 50%);
-                border-left: 4px solid #C89B3C;
-                padding: 16px 14px;
-                gap: 12px;
-                overflow-y: visible;
-                overscroll-behavior: contain;
-                position: relative;
-                z-index: 30;
-                box-shadow: inset 8px 0 10px rgba(0,0,0,0.08);
-            }
+        .status-bar {
+            height: 100%;
+            min-height: 0;
+        }
+
+        .status-top-row {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+            gap: 14px;
+        }
+
+        .status-metric-row {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px;
+            width: 100%;
+            min-height: 0;
+        }
+
+        .avatar-badge {
+            padding: 14px;
+            width: 100%;
+        }
+
+        .location-info,
+        .stamina-info {
+            padding: 12px;
+            min-height: 0;
+        }
+
+        .game-board-wrapper {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            min-height: 0;
+            max-width: 100%;
+            max-height: 100%;
+            padding: 0;
+            gap: 12px;
+        }
+
+        .monopoly-board {
+            width: min(100%, 78vh);
+            height: min(78vh, 100%);
+            aspect-ratio: 1 / 1;
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        .control-group {
+            position: relative;
+            margin: 0 auto;
+            z-index: 1;
+            bottom: auto;
+            right: auto;
+        }
+
+        .panel-card {
+            overflow: hidden;
+            max-height: 100%;
+            min-height: 0;
+        }
+
+        .panel-metrics {
+            display: grid;
+            gap: 10px;
+            width: 100%;
+        }
+
+        .panel-summary-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px;
+        }
 
             .game-main .monopoly-board {
-                width: min(860px, 100%);
-                height: auto;
+                width: min(100%, 78vh);
+                height: min(78vh, 100%);
                 max-width: 100%;
                 max-height: 100%;
             }
@@ -303,83 +374,6 @@
                 margin: 0;
                 line-height: 1.1;
             }
-        }
-
-        /* Mobile adjustment (under 1024px) */
-        @media (max-width: 1023px) {
-            body {
-                display: flex;
-                flex-direction: column;
-                height: auto;
-                min-height: 100vh;
-            }
-
-            #top-status {
-                width: 100% !important;
-                max-width: 100% !important;
-                height: auto !important;
-                position: relative !important;
-                border-right: none !important;
-                border-bottom: 4px solid #C89B3C;
-                padding: 16px;
-                gap: 12px;
-                background: linear-gradient(180deg, #F6EBD3, #E8D7B9) !important;
-                overflow-y: auto !important;
-            }
-
-            .game-main {
-                width: 100%;
-                height: auto;
-                min-height: auto;
-                padding: 16px;
-                order: 2;
-            }
-
-            .game-panel {
-                width: 100%;
-                height: auto;
-                padding: 16px;
-                background: linear-gradient(180deg, #F6EBD3, #E8D7B9);
-                border-left: none;
-                border-top: 4px solid #C89B3C;
-                order: 3;
-            }
-
-            .status-left {
-                flex-direction: row;
-                flex-wrap: wrap;
-                gap: 12px;
-            }
-
-            .avatar-badge {
-                flex-direction: row;
-                gap: 12px;
-                padding: 12px 16px;
-                width: auto;
-            }
-
-            #status-avatar {
-                width: 60px;
-                height: 60px;
-            }
-
-            .stamina-info {
-                text-align: right;
-                flex-direction: column;
-            }
-
-            .status-summary {
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
-                gap: 8px;
-                width: 100%;
-            }
-
-            .status-summary-item {
-                padding: 8px;
-                gap: 4px;
-            }
-        }
 
         /* Screen Overlay */
         .screen-overlay {
@@ -696,65 +690,45 @@
         }
 
         .game-main {
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: clamp(12px, 2vw, 24px);
-            gap: clamp(24px, 3vw, 32px);
-            background: linear-gradient(135deg, #C89B3C 0%, #F6EBD3 50%, #E8D7B9 100%);
-            position: relative;
-            width: 100%;
-        }
-
-        .game-board-wrapper {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            max-width: 900px;
-            gap: clamp(16px, 2vw, 24px);
-            margin: 0 auto;
-        }
-
-        @media (min-width: 1024px) {
-            .game-board-wrapper {
+                display: flex;
                 flex-direction: column;
                 align-items: center;
                 justify-content: center;
-                gap: clamp(24px, 2vw, 28px);
+                padding: 14px 18px;
+                gap: 12px;
+                background: linear-gradient(135deg, #C89B3C 0%, #F6EBD3 50%, #E8D7B9 100%);
+                position: relative;
+                width: 100%;
+                height: 100%;
+                min-height: 0;
+            }
+
+            .game-board-wrapper {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                height: 100%;
+                max-width: 100%;
+                max-height: 100%;
+                gap: 12px;
+                margin: 0;
+                padding: 0;
             }
 
             .control-group {
-                position: static;
-                margin: 0;
-                align-self: flex-end;
+                position: relative;
+                margin: 0 auto;
+                align-self: center;
                 width: fit-content;
-                margin-left: clamp(18px, 2vw, 24px);
             }
 
             .btn-dir-container {
                 display: grid;
-                grid-template-columns: 1fr;
-                gap: clamp(10px, 2vw, 14px);
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                gap: 12px;
             }
-        }
-
-        @media (max-width: 1023px) {
-            .game-main {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-            }
-            .game-panel {
-                max-width: 100%;
-            }
-            .status-summary {
-                grid-template-columns: 1fr;
-            }
-        }
 
         .game-panel {
             display: flex;
@@ -989,13 +963,12 @@
         }
 
         .control-group {
-            position: fixed;
-            bottom: clamp(15px, 4vw, 40px);
-            right: clamp(15px, 4vw, 40px);
+            position: relative;
             display: flex;
             flex-direction: column;
             align-items: center;
             z-index: 60;
+            margin-top: 10px;
         }
 
         .control-group.hidden {
@@ -1570,109 +1543,67 @@
         }
 
         .adventure-container {
-            width: min(95vw, 980px);
-            max-width: 980px;
+            width: min(95vw, 640px);
+            max-width: 640px;
             max-height: calc(100vh - 24px);
             background: linear-gradient(135deg, #F6EBD3 0%, #E8D7B9 50%);
             border-radius: 24px;
             border: 3px solid #C89B3C;
-            padding: clamp(16px, 1.2vw, 18px);
+            padding: clamp(10px, 1.2vw, 14px);
             display: flex;
             flex-direction: column;
             align-items: stretch;
             justify-content: flex-start;
-            gap: clamp(12px, 1vw, 16px);
+            gap: clamp(6px, 0.8vw, 10px);
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.18);
-            overflow: auto;
+            overflow: visible;
             min-height: 0;
         }
 
         .adventure-title {
-            font-size: clamp(25px, 4.5vw, 34px);
+            font-size: clamp(24px, 4vw, 32px);
             color: #4E2E1E;
             font-weight: 900;
             margin: 0;
             text-align: center;
-            letter-spacing: 0.02em;
-            text-transform: none;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
         }
 
         .adventure-subtitle {
-            font-size: clamp(13px, 1.3vw, 15px);
+            font-size: clamp(12px, 1.4vw, 14px);
             color: #6B4B2A;
             text-align: center;
             margin: 0;
-            font-weight: 600;
-            line-height: 1.4;
+            font-weight: 700;
+            letter-spacing: 0.04em;
             opacity: 0.85;
         }
 
-        /* Adventure grid layout with left info, center stage, and right progress/notes */
-        .adventure-grid {
-            display: grid;
-            grid-template-columns: minmax(180px, 1fr) minmax(440px, 2.5fr) minmax(220px, 1fr);
-            gap: clamp(16px, 1.5vw, 20px);
-            width: 100%;
-            align-items: start;
-        }
-
-        .adventure-left-panel,
-        .adventure-right-panel {
+        /* Info Row - Wilayah & Alat Musik */
+        .adventure-info-row {
             display: flex;
-            flex-direction: column;
-            gap: clamp(14px, 1vw, 16px);
-            width: 100%;
-            justify-content: flex-start;
-        }
-
-        .adventure-center-panel {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: clamp(14px, 1vw, 18px);
+            gap: clamp(10px, 1vw, 14px);
             width: 100%;
             justify-content: center;
+            flex-wrap: wrap;
         }
 
-        .adventure-center-panel .adventure-buttons {
-            width: 100%;
-            max-width: 360px;
-        }
-
-        .adventure-info-card,
-        .progress-card,
-        .notes-card {
-            background: rgba(255, 255, 255, 0.98);
+        .adventure-info-card {
+            flex: 1 1 120px;
+            min-width: 100px;
+            max-width: 150px;
+            background: rgba(255, 255, 255, 0.95);
             border: 1px solid rgba(200, 155, 60, 0.35);
-            border-radius: 20px;
-            padding: clamp(16px, 1.1vw, 18px);
-            box-shadow: 0 7px 20px rgba(0, 0, 0, 0.08);
+            border-radius: 14px;
+            padding: clamp(3px, 0.4vw, 5px);
+            text-align: left;
             display: flex;
             flex-direction: column;
-            gap: clamp(12px, 1vw, 14px);
-            width: 100%;
-        }
-
-        .adventure-title {
-            font-size: clamp(28px, 5vw, 38px);
-            color: #4E2E1E;
-            font-weight: 900;
-            margin: 0;
-            text-align: center;
-            line-height: 1.05;
-            letter-spacing: 0.04em;
-            text-transform: none;
-            margin-bottom: clamp(4px, 1vw, 6px);
-        }
-
-        .adventure-subtitle {
-            font-size: clamp(14px, 1.3vw, 16px);
-            color: #6B4B2A;
-            text-align: center;
-            margin: 0;
-            font-weight: 600;
-            line-height: 1.4;
-            margin-bottom: clamp(12px, 1vw, 14px);
+            gap: 2px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            justify-content: center;
         }
 
         .adventure-info-card:hover {
@@ -1682,29 +1613,29 @@
 
         .adventure-info-card .info-label {
             text-align: left;
-            font-size: clamp(10px, 1vw, 12px);
-            letter-spacing: 0.10em;
-            color: #6B4B2A;
-            font-weight: 700;
+            font-size: clamp(8px, 0.85vw, 10px);
+            letter-spacing: 0.08em;
         }
 
         .info-main {
             display: flex;
             align-items: center;
-            gap: clamp(10px, 1vw, 14px);
+            gap: clamp(6px, 0.8vw, 8px);
             justify-content: flex-start;
             width: 100%;
         }
 
         .adventure-mini-image {
-            width: clamp(44px, 8vw, 56px);
-            height: clamp(44px, 8vw, 56px);
-            border-radius: 14px;
+            width: clamp(20px, 4vw, 26px);
+            height: clamp(20px, 4vw, 26px);
+            border-radius: 10px;
+            object-fit: cover;
+            border: 1px solid rgba(76, 35, 17, 0.16);
             background: #fff;
         }
 
         .info-value {
-            font-size: clamp(12px, 1vw, 14px);
+            font-size: clamp(10px, 1vw, 12px);
             font-weight: 900;
             color: #3C2B20;
             white-space: nowrap;
@@ -1712,10 +1643,14 @@
             text-overflow: ellipsis;
         }
 
+        #adventure-region-name {
+            display: none !important;
+        }
+
         /* Game Stage */
         .adventure-stage {
             position: relative;
-            width: min(65vw, 580px);
+            width: min(50vw, 44vh, 380px);
             max-width: 100%;
             aspect-ratio: 1 / 1;
             margin: 0 auto;
@@ -1724,31 +1659,23 @@
             background-size: cover;
             background-position: center center;
             background-repeat: no-repeat;
-            border-radius: 24px;
+            border-radius: 20px;
             overflow: hidden;
             border: 4px solid rgba(200, 155, 60, 0.4);
-            box-shadow: inset 0 0 24px rgba(0,0,0,0.18), 0 14px 34px rgba(0,0,0,0.16);
+            box-shadow: inset 0 0 24px rgba(0,0,0,0.18), 0 12px 32px rgba(0,0,0,0.15);
             flex-shrink: 0;
             min-height: 0;
         }
 
-        .adventure-stage::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.12));
-            pointer-events: none;
-        }
-
         .adventure-player {
             position: absolute;
-            width: clamp(54px, 11vw, 80px);
-            height: clamp(62px, 12vw, 88px);
+            width: clamp(48px, 12vw, 64px);
+            height: clamp(56px, 14vw, 72px);
             left: 50%;
-            bottom: 10%;
+            bottom: 15%;
             transform: translateX(-50%);
             transition: left 0.15s ease;
-            font-size: clamp(34px, 8vw, 48px);
+            font-size: clamp(32px, 7vw, 40px);
             z-index: 10;
         }
 
@@ -1765,7 +1692,6 @@
             font-size: clamp(16px, 3.5vw, 20px);
             box-shadow: 0 8px 18px rgba(0,0,0,0.18), 0 0 16px rgba(255, 215, 0, 0.4);
             border: 2px solid rgba(255,255,255,0.8);
-            z-index: 8;
         }
 
         .adventure-obstacle img {
@@ -1782,60 +1708,13 @@
 
         /* Instruction Text */
         .adventure-instruction {
-            font-size: clamp(12px, 1.1vw, 14px);
+            font-size: clamp(11px, 1.2vw, 13px);
             color: #3C2B20;
             text-align: center;
             margin: 0;
-            font-weight: 700;
-            line-height: 1.4;
-            max-width: 100%;
-        }
-
-        .progress-card,
-        .notes-card {
-            background: rgba(255, 255, 255, 0.98);
-            border-radius: 18px;
-            border: 1px solid rgba(200, 155, 60, 0.3);
-            padding: clamp(14px, 1vw, 16px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-            display: flex;
-            flex-direction: column;
-            gap: clamp(10px, 1vw, 12px);
-        }
-
-        .progress-card h3,
-        .notes-card h3 {
-            margin: 0;
-            color: #4E2E1E;
-            font-size: clamp(14px, 1.2vw, 18px);
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-        }
-
-        .progress-card .metric-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 12px;
-            padding: 10px 12px;
-            background: rgba(200, 155, 60, 0.1);
-            border-radius: 14px;
-            border: 1px solid rgba(200, 155, 60, 0.2);
-        }
-
-        .progress-card .metric-row span,
-        .progress-card .metric-row strong {
-            color: #4E2E1E;
-            font-weight: 800;
-            font-size: clamp(11px, 1vw, 13px);
-        }
-
-        .notes-card p {
-            margin: 0;
-            line-height: 1.5;
-            color: #3C2B20;
-            font-size: clamp(12px, 1vw, 14px);
             font-weight: 600;
+            line-height: 1.35;
+            max-width: 100%;
         }
 
         /* Buttons */
@@ -3138,47 +3017,35 @@
     <!-- ADVENTURE OVERLAY -->
     <div id="adventure-overlay" class="screen-overlay hidden">
         <div class="adventure-container">
-            <h2 class="adventure-title">petualangan<br>musik nusantara</h2>
-            <p class="adventure-subtitle">tangkap alat musik yang sesuai dengan wilayahnya!</p>
+            <h2 class="adventure-title">MINI-GAME PETUALANGAN</h2>
+            <p class="adventure-subtitle">Tangkap alat musik yang sesuai!</p>
             
-            <div class="adventure-grid">
-                <div class="adventure-left-panel">
-                    <div class="adventure-info-card">
-                        <div class="info-label">WILAYAH</div>
-                        <div class="info-main">
-                            <img src="https://raw.githubusercontent.com/riyanarahman320/26/main/BANDUNG.png" alt="Wilayah Jawa Barat" class="adventure-mini-image">
-                            <span id="adventure-region-name" class="info-value">Jawa Barat</span>
-                        </div>
-                    </div>
-                    <div class="adventure-info-card">
-                        <div class="info-label">ALAT MUSIK</div>
-                        <div class="info-main">
-                            <img src="https://raw.githubusercontent.com/lesmanaalit85-oss/resonance-odyssey/2316af59054f31128ec8fb930243ec71875b4051/Hijau%20dan%20Biru%20Warna-warni%20Lucu%20Ilustrasi%20Alam%20Doa%20Masuk%20Rumah%20A4%20Dokumen%20(Logo).png" alt="Alat Musik Angklung" class="adventure-mini-image">
-                            <span id="adventure-instrument-name" class="info-value">Angklung</span>
-                        </div>
+            <div class="adventure-info-row">
+                <div class="adventure-info-card">
+                    <div class="info-label">WILAYAH</div>
+                    <div class="info-main">
+                        <img src="https://raw.githubusercontent.com/riyanarahman320/26/main/BANDUNG.png" alt="Wilayah Jawa Barat" class="adventure-mini-image">
+                        <span id="adventure-region-name" class="info-value">Jawa Barat</span>
                     </div>
                 </div>
-                <div class="adventure-center-panel">
-                    <div id="adventure-stage" class="adventure-stage">
-                        <div id="adventure-player" class="adventure-player">🧍</div>
-                    </div>
-                    <p id="adventure-instruction" class="adventure-instruction">Tangkap alat musik yang jatuh untuk lanjut ke soal</p>
-                    <div class="adventure-buttons">
-                        <button id="adventure-start-btn" class="btn-gold adventure-btn" onclick="startAdventure()">MULAI</button>
-                        <button id="adventure-continue-btn" class="btn-gold adventure-btn hidden" onclick="proceedToQuiz()">LANJUT KE SOAL</button>
+                <div class="adventure-info-card">
+                    <div class="info-label">ALAT MUSIK</div>
+                    <div class="info-main">
+                        <img src="https://raw.githubusercontent.com/lesmanaalit85-oss/resonance-odyssey/2316af59054f31128ec8fb930243ec71875b4051/Hijau%20dan%20Biru%20Warna-warni%20Lucu%20Ilustrasi%20Alam%20Doa%20Masuk%20Rumah%20A4%20Dokumen%20(Logo).png" alt="Alat Musik Angklung" class="adventure-mini-image">
+                        <span id="adventure-instrument-name" class="info-value">Angklung</span>
                     </div>
                 </div>
-                <div class="adventure-right-panel">
-                    <div class="panel-card progress-card">
-                        <h3>Progress</h3>
-                        <div class="metric-row"><span>Selesai</span><strong id="adventure-progress">0 / 15</strong></div>
-                        <div class="metric-row"><span>Skor</span><strong id="adventure-score">0</strong></div>
-                    </div>
-                    <div class="panel-card notes-card">
-                        <h3>Catatan</h3>
-                        <p id="adventure-note">Tangkap alat musik yang benar sesuai wilayah untuk mendapatkan poin tambahan.</p>
-                    </div>
-                </div>
+            </div>
+            
+            <div id="adventure-stage" class="adventure-stage">
+                <div id="adventure-player" class="adventure-player">🧍</div>
+            </div>
+            
+            <p id="adventure-instruction" class="adventure-instruction">Tangkap alat musik yang jatuh untuk lanjut ke soal</p>
+            
+            <div class="adventure-buttons">
+                <button id="adventure-start-btn" class="btn-gold adventure-btn" onclick="startAdventure()">MULAI</button>
+                <button id="adventure-continue-btn" class="btn-gold adventure-btn hidden" onclick="proceedToQuiz()">LANJUT KE SOAL</button>
             </div>
             
             <p id="adventure-status" class="adventure-status-hidden"></p>
