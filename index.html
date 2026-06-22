@@ -1570,48 +1570,48 @@
         }
 
         .adventure-container {
-            width: min(95vw, 640px);
-            max-width: 640px;
+            width: min(95vw, 980px);
+            max-width: 980px;
             max-height: calc(100vh - 24px);
             background: linear-gradient(135deg, #F6EBD3 0%, #E8D7B9 50%);
             border-radius: 24px;
             border: 3px solid #C89B3C;
-            padding: clamp(10px, 1.2vw, 14px);
+            padding: clamp(16px, 1.2vw, 18px);
             display: flex;
             flex-direction: column;
             align-items: stretch;
             justify-content: flex-start;
-            gap: clamp(6px, 0.8vw, 10px);
+            gap: clamp(12px, 1vw, 16px);
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.18);
-            overflow: visible;
+            overflow: auto;
             min-height: 0;
         }
 
         .adventure-title {
-            font-size: clamp(24px, 4vw, 32px);
+            font-size: clamp(25px, 4.5vw, 34px);
             color: #4E2E1E;
             font-weight: 900;
             margin: 0;
             text-align: center;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
+            letter-spacing: 0.02em;
+            text-transform: none;
         }
 
         .adventure-subtitle {
-            font-size: clamp(12px, 1.4vw, 14px);
+            font-size: clamp(13px, 1.3vw, 15px);
             color: #6B4B2A;
             text-align: center;
             margin: 0;
-            font-weight: 700;
-            letter-spacing: 0.04em;
+            font-weight: 600;
+            line-height: 1.4;
             opacity: 0.85;
         }
 
         /* Adventure grid layout with left info, center stage, and right progress/notes */
         .adventure-grid {
             display: grid;
-            grid-template-columns: minmax(180px, 1fr) minmax(420px, 2.2fr) minmax(220px, 1fr);
-            gap: clamp(14px, 1.5vw, 20px);
+            grid-template-columns: minmax(180px, 1fr) minmax(440px, 2.5fr) minmax(220px, 1fr);
+            gap: clamp(16px, 1.5vw, 20px);
             width: 100%;
             align-items: start;
         }
@@ -1620,16 +1620,23 @@
         .adventure-right-panel {
             display: flex;
             flex-direction: column;
-            gap: clamp(14px, 1.2vw, 18px);
+            gap: clamp(14px, 1vw, 16px);
             width: 100%;
+            justify-content: flex-start;
         }
 
         .adventure-center-panel {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: clamp(14px, 1.2vw, 18px);
+            gap: clamp(14px, 1vw, 18px);
             width: 100%;
+            justify-content: center;
+        }
+
+        .adventure-center-panel .adventure-buttons {
+            width: 100%;
+            max-width: 360px;
         }
 
         .adventure-info-card,
@@ -1637,17 +1644,13 @@
         .notes-card {
             background: rgba(255, 255, 255, 0.98);
             border: 1px solid rgba(200, 155, 60, 0.35);
-            border-radius: 18px;
-            padding: clamp(14px, 1.1vw, 16px);
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+            border-radius: 20px;
+            padding: clamp(16px, 1.1vw, 18px);
+            box-shadow: 0 7px 20px rgba(0, 0, 0, 0.08);
             display: flex;
             flex-direction: column;
-            gap: clamp(10px, 1vw, 12px);
+            gap: clamp(12px, 1vw, 14px);
             width: 100%;
-        }
-
-        .adventure-info-card {
-            justify-content: flex-start;
         }
 
         .adventure-title {
@@ -1659,6 +1662,7 @@
             line-height: 1.05;
             letter-spacing: 0.04em;
             text-transform: none;
+            margin-bottom: clamp(4px, 1vw, 6px);
         }
 
         .adventure-subtitle {
@@ -1668,11 +1672,7 @@
             margin: 0;
             font-weight: 600;
             line-height: 1.4;
-        }
-
-        .adventure-info-card:hover {
-            transform: none;
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+            margin-bottom: clamp(12px, 1vw, 14px);
         }
 
         .adventure-info-card:hover {
@@ -1682,29 +1682,29 @@
 
         .adventure-info-card .info-label {
             text-align: left;
-                font-size: clamp(10px, 1vw, 12px);
-                letter-spacing: 0.10em;
-                color: #6B4B2A;
-                font-weight: 700;
-            }
+            font-size: clamp(10px, 1vw, 12px);
+            letter-spacing: 0.10em;
+            color: #6B4B2A;
+            font-weight: 700;
+        }
 
-            .info-main {
-                display: flex;
-                align-items: center;
-                gap: clamp(10px, 1vw, 14px);
-                justify-content: flex-start;
-                width: 100%;
-            }
+        .info-main {
+            display: flex;
+            align-items: center;
+            gap: clamp(10px, 1vw, 14px);
+            justify-content: flex-start;
+            width: 100%;
+        }
 
-            .adventure-mini-image {
-                width: clamp(44px, 8vw, 56px);
-                height: clamp(44px, 8vw, 56px);
-                border-radius: 14px;
+        .adventure-mini-image {
+            width: clamp(44px, 8vw, 56px);
+            height: clamp(44px, 8vw, 56px);
+            border-radius: 14px;
             background: #fff;
         }
 
         .info-value {
-            font-size: clamp(10px, 1vw, 12px);
+            font-size: clamp(12px, 1vw, 14px);
             font-weight: 900;
             color: #3C2B20;
             white-space: nowrap;
@@ -1712,14 +1712,10 @@
             text-overflow: ellipsis;
         }
 
-        #adventure-region-name {
-            display: none !important;
-        }
-
         /* Game Stage */
         .adventure-stage {
             position: relative;
-            width: min(62vw, 560px);
+            width: min(65vw, 580px);
             max-width: 100%;
             aspect-ratio: 1 / 1;
             margin: 0 auto;
@@ -1749,26 +1745,10 @@
             width: clamp(54px, 11vw, 80px);
             height: clamp(62px, 12vw, 88px);
             left: 50%;
-            bottom: 12%;
+            bottom: 10%;
             transform: translateX(-50%);
             transition: left 0.15s ease;
             font-size: clamp(34px, 8vw, 48px);
-            z-index: 10;
-        }
-
-        .adventure-obstacle {
-            z-index: 8;
-        }
-
-        .adventure-player {
-            position: absolute;
-            width: clamp(48px, 12vw, 64px);
-            height: clamp(56px, 14vw, 72px);
-            left: 50%;
-            bottom: 15%;
-            transform: translateX(-50%);
-            transition: left 0.15s ease;
-            font-size: clamp(32px, 7vw, 40px);
             z-index: 10;
         }
 
@@ -1785,6 +1765,7 @@
             font-size: clamp(16px, 3.5vw, 20px);
             box-shadow: 0 8px 18px rgba(0,0,0,0.18), 0 0 16px rgba(255, 215, 0, 0.4);
             border: 2px solid rgba(255,255,255,0.8);
+            z-index: 8;
         }
 
         .adventure-obstacle img {
